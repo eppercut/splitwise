@@ -126,7 +126,7 @@ class User(object):
     def __getattr__(self, item):
         # Don't override magic methods
         if item.startswith('__') and item.endswith('__'):
-            return super().__getattr__(item)
+            raise AttributeError
         return None
 
 
