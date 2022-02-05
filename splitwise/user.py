@@ -124,6 +124,9 @@ class User(object):
         self.id = id
 
     def __getattr__(self, item):
+        # Don't override magic methods
+        if item.startswith('__') and item.endswith('__'):
+            return self.super().__getattr__(item)
         return None
 
 
