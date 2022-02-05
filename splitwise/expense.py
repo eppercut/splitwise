@@ -473,6 +473,9 @@ class Expense(object):
             details(string): details of the expense
         """
         self.details = details
-
+ 
     def __getattr__(self, item):
+        # Don't override magic methods
+        if item.startswith('__') and item.endswith('__'):
+            return self.super().__getattr__(item)
         return None
